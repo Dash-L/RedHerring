@@ -1,16 +1,16 @@
 # dependencies
-/node_modules
-/.pnp
+**/node_modules
+**/.pnp
 .pnp.js
 
 # testing
-/coverage
+**/coverage
 
 # production
-/build
+**/build
 
 # python
-/__pycache__
+**/__pycache__
 
 # misc
 .DS_Store
