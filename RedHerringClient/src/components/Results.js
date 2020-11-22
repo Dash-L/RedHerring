@@ -20,6 +20,10 @@ class Results extends React.Component {
         <button onClick={() => this.onRestartClick()} className="ui blue button">
           Play Again?
         </button>
+        <div className="key">
+          <span className="realKey">Real = green</span>
+          <span className="fakeKey">Fake = red</span>
+        </div>
       </div>
     )
   }
