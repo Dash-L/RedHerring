@@ -1,0 +1,117 @@
+body {
+  letter-spacing: .5px;
+}
+
+#game, #results, #info {
+  margin: 1rem auto;
+  width: 80%;
+}
+
+/* Info */
+#info {
+  background-color: rgb(209, 77, 68);
+  padding: 2rem;
+}
+
+#info .ui.button {
+  background-color: white !important;
+  margin-bottom: 2rem;
+}
+
+#info div {
+  color: white;
+  font-size: 24px;
+  line-height: 2rem;
+}
+
+/* Header */
+#header {
+  color: white;
+  background-color: rgb(209, 77, 68);
+  padding: 1rem .5rem;
+  width: 100%;
+}
+
+#header .question.icon {
+  color: white;
+  font-size: 24px;
+  float: right;
+}
+
+#header * {
+  text-align: center;
+}
+
+/* Game */
+#game .ui.cards {
+  display: flex;
+  align-items: center;
+  margin: 1rem auto;
+  width: 100%
+}
+
+#game .card {
+  cursor: pointer;
+  width: 100%;
+}
+
+#game .card .content {
+  font-size: 18px;
+  line-height: 2rem;
+  text-transform: lowercase;
+  word-wrap: break-word
+}
+
+#game .capitalize {
+  text-transform: capitalize;
+}
+
+#game .ui.blue.button {
+  float: right;
+  margin: 1rem 0;
+}
+
+/* Results */
+#results {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 28px;
+  margin: 2.5rem auto;
+  width: 100%;
+}
+
+#results .content {
+  text-align: center;
+  height: 2rem;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+/* Toggled Styles */
+.selected {
+  box-shadow: 0px 0px 10px rgb(255, 158, 151) !important;
+}
+
+.real {
+  background-color: rgb(115, 226, 115) !important;
+}
+
+.fake {
+  color: white;
+  background-color: rgb(209, 77, 68) !important;
+}
+
+/* Responsive Styles */
+@media only screen and (min-width: 992px) {
+  #info {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #game .card {
+    margin: 1rem 3%;
+    width: 44%;
+  }
+}
