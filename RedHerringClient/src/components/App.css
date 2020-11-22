@@ -78,7 +78,7 @@ body {
   flex-wrap: wrap;
   font-size: 28px;
   margin: 2.5rem auto;
-  width: 100%;
+  width: 50%;
 }
 
 #results .content {
@@ -86,6 +86,25 @@ body {
   height: 2rem;
   margin: 1rem auto;
   width: 100%;
+}
+
+#results .ui.button {
+  width: 50%;
+}
+
+#results .key {
+  font-size: 16px;
+  width: 100%;
+  text-align: center;
+}
+
+#results .realKey {
+  color: rgb(115, 226, 115);
+  margin-right: 2rem; 
+}
+
+#results .fakeKey {
+  color: rgb(209, 77, 68);
 }
 
 /* Toggled Styles */
