@@ -18,7 +18,7 @@ class Game extends React.Component {
     //Calculates score
     let newScore = this.state.score;
     for(const item of this.state.selected) {
-      if(item.real) {
+      if(!item.real) {
         newScore++;
       } else {
         newScore--;
