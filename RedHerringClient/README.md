@@ -1,11 +1,16 @@
-# RedHerring
-Our entry into the TechHacks TechNight2020 hackathon.
+# RedHerring Client
+The client for RedHerring, run separately from the server   
+[original repl](https://repl.it/@DashL/RedHerringClient)
 
-## About
-The purpose of this project is to show how easily misinformation can be spread. Without even realizing it, one could be perpetuating a false narrative.
+# Running
+1. Run `yarn` to install all dependencies. This only needs to be run once (right after you pull from this repository).   
+    **NOTE:** on windows you may need to run `yarn add react-router-dom` before the project will build
 
-### Misinformation
-Misinformation is false or inaccurate information that is usually intended to deceive, although it may be unintentional as well. This can be found in many places, from video games, to relationships, to even the news and media.
+2. Create a .env file and add the line:
+    ```
+    REACT_APP_SERVER_URL=/*Your server*/
+    ```
+    Make sure to replace "Your server" with the url your [RedHerring-server](https://github.com/Dash-L/RedHerring/tree/main/server) is running on.
+   
+3. Run `yarn start` to start the app (in debug mode, recommended for local use). If you want a release build use `yarn build` (although you will need a little more setup to actually run it)
 
-### Misinformation vs Disinformation:
-Disinformation is more propaganda than anything else. It is typically used by government or militia purposes. Disinformation is a weaponized version of misinformation.
