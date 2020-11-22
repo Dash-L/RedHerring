@@ -52,6 +52,7 @@ class Game extends React.Component {
           <Link to="/info"><i className="question circle icon" /></Link>
           <h1 className="header">Red Herring</h1>
           <h3>Click all the fake headlines</h3>
+          <div>Fake Headlines: {this.state.headlines.filter((obj) => obj.real === false).length}</div>
         </div>
 
         <div id="game">
