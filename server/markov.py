@@ -1,54 +1,52 @@
 import numpy as np
-import language_tool_python as lt
-from pprint import pprint
 
-import scraper
+class Markov:
+    """An abstract data type to make markov chains"""
 
-# from pprint import pprint
+    def __init__(self, headlines):
+        self.avg_len = sum([len(headline.split(' ')) for headline in headlines]) / len(headlines)
+        self.headlines = headlines
+        self.keys = self._populate_keys()
 
-def make_Markovs(headlines):
-    """takes a list of sentences to return a single markov chain"""
-    
-    average_sentence_len = sum([len(headline.split(" ")) for headline in headlines])/len(headlines)
+    def _populate_keys(self):
+        """Each word to the words that come after it"""
 
-    all_text = " ".join(headlines).upper().split(" ")
+        keys = {}
+        headlines = self.headlines.copy() 
+        for headline in headlines: 
+            headline = headline.split(" ")
+            
+            # collecting words that start and end sentences
+            try: keys["ending_words"].append(headline[-1]) 
+            except KeyError: keys["ending_words"] = [headline[-1]]
+            try: keys["starting_words"].append(headline[0])
+            except KeyError: keys["starting_words"] = [headline[0]]
 
-    keys = {}
-    for idx, word in enumerate(all_text):
-        if (idx+2 > len(all_text)): break
+            for idx, word in enumerate(headline):
+                if (idx+2 > len(headline)): break
 
-        next_word = all_text[idx+1]
-        try: keys[word].append(next_word)
-        except KeyError: keys[word] = [next_word]
-    
-    markov = [np.random.choice(list(keys.keys()))]
-    # stops when the markov is the average length of a headline or ends with a word that ended a real headline
-    # not ((len(markov) < 3) and str(markov).endswith(".")) # for the sentence-enders?
-    while (len(markov) < average_sentence_len):
-        try: markov.append(np.random.choice(keys[markov[-1]]))
-        except KeyError: break
-    markov = " ".join(markov) # .replace(".", "") # re-add if we re-add the period system
+                next_word = headline[idx+1]
+                try: keys[word].append(next_word)
+                except KeyError: keys[word] = [next_word]
+        return keys
 
-    # for reference if you're curious about the library
-    # https://predictivehacks.com/languagetool-grammar-and-spell-checker-in-python/
-    # tool = lt.LanguageTool('en-US')
-    # grammar_things = tool.check(markov)
+    def get_fake_headline(self):
+        """Generating random strings from the keys"""
 
-    # mistakes = [text[rules.offset:rules.errorLength+rules.offset] for rules in grammar_things if rules.replacements]
-    # corrections = [rules.replacements[0] for rules in grammar_things if rules.replacements]
-    # start_pos = [rules.offset for rules in grammar_things if rules.replacements]  
-    # end_pos = [rules.errorLength+rules.offset for rules in grammar_things if rules.replacements]
+        markov = [np.random.choice(self.keys["starting_words"])]
 
-    # pprint(start_pos)
-    # pprint(end_pos)
+        sentence_enders = self.keys["ending_words"]
 
-    return markov
+        while not ((len(markov) > self.avg_len-2) and (markov[-1] in sentence_enders)):
+            try: markov.append(np.random.choice(self.keys[markov[-1]]))
+            except KeyError: break
+        
+        markov = " ".join(markov)
 
-test_case = scraper.get_headlines()
-print("Orig:", make_Markovs(test_case))
+        return (markov if markov not in self.headlines 
+        else self.get_fake_headline())
 
-def add_fakes(json):
-	real_headlines = list(json['headlines'])
-	for _ in range(len(real_headlines)):
-		json['headlines'].append({ 'content': make_Markovs([info['content'] for info in real_headlines]), 'real': False })
-	return json
+    def add_fakes(self, json):
+        for _ in range(len(json['headlines'])):
+            json['headlines'].append({ 'content': self.get_fake_headline(), 'real': False })
+        return json

@@ -1,6 +1,5 @@
 import scraper
-import markov_classes
-import markov # to see what the original headlines looked like
+import markov
 
 from flask import Flask
 from flask import jsonify
@@ -17,7 +16,7 @@ def list_to_json(headlines):
         }
 
 headlines = scraper.get_headlines()
-m_gen = markov_classes.Markov(headlines)
+m_gen = markov.Markov(headlines)
 json = list_to_json(headlines)
 m_gen.add_fakes(json)
 index = 0

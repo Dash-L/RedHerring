@@ -37,6 +37,4 @@ def get_headlines():
                 if len(selector.text.strip().split(" ")) >= 4: # removing short headlines because they mess with the results
                     data.append(selector.text.strip())
 
-    print(len(list(set(data))))
-
-    return strip_headlines(list(set(data))) # return the list without duplicates and in all caps
+    return strip_headlines(list(set(data))) 
