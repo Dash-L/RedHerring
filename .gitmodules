@@ -1,0 +1,6 @@
+[submodule "RedHerringClient"]
+	path = RedHerringClient
+	url = https://github.com/dash-l/RedHerringClient
+[submodule "RedHerringServer"]
+	path = RedHerringServer
+	url = https://github.com/dash-l/RedHerringServer
