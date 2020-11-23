@@ -9,3 +9,15 @@ Misinformation is false or inaccurate information that is usually intended to de
 
 ### Misinformation vs Disinformation:
 Disinformation is more propaganda than anything else. It is typically used for government or militia purposes. Disinformation is a weaponized version of misinformation. It pushes an agenda. Our project deals with misinformation.
+
+## Running
+**Before running you must have the following installed and on your PATH:**
+- [python3](https://www.python.org/)
+- [poetry](https://python-poetry.org/)
+- [yarn](https://yarnpkg.com/)
+
+### Windows
+simply run `./run.bat`, or see the individual repos for info
+
+### MacOS/Linux
+**TODO:**
