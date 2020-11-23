@@ -17,7 +17,8 @@ Disinformation is more propaganda than anything else. It is typically used for g
 - [yarn](https://yarnpkg.com/)
 
 ### Windows
-simply run `./run.bat`, or see the individual repos for info
+1. Run `git clone --recursive https://github.com/dash-l/RedHerring`
+2. Run `./run.bat`, or see the individual repos for info
 
 ### MacOS/Linux
 **TODO:**
